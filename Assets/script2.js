@@ -10,28 +10,29 @@
 // //        console.log ("Accepted") 
 // //         getLength = false;
 // //       }
-var getLength = true;
-            while (getLength) {
-              var characterTy = prompt("Please enter a password length 8 - 128 characters");
-              if (characterTy >= 8 && characterTy <= 128) {
-               console.log ("Accepted") 
-                getLength = false;
-              }
-            }
-            newFunction();
+// var getLength = true;
+//             while (getLength) {
+//               var characterTy = prompt("Please enter a password length 8 - 128 characters");
+//               if (characterTy < 8 || characterTy > 128 && characterTy !== null) {
+//                console.log (characterTy) 
+//                alert("Must enter valid length");
+//                 getLength = false;
+//               }
+//             }
+//             newFunction();
 
-            function newFunction() {
-              var getCharacters = true;
-              while (getCharacters) {
-                var characters = prompt("Please type accept if you agree to use previously selected character length and will select character type lowercase, uppercase, numeric, and/or special characters to create your password");
-                if (characters === "accept") {
-                  console.log("Password Created");
-                  getCharacters = false;
-                  alert("Please enter selection below for new password");
-                }
+            // function newFunction() {
+            //   var getCharacters = true;
+            //   while (getCharacters) {
+            //     var characters = prompt("Please type accept if you agree to use previously selected character length and will select character type lowercase, uppercase, numeric, and/or special characters to create your password");
+            //     if (characters === "accept") {
+            //       console.log("Password Created");
+            //       getCharacters = false;
+            //       alert("Please enter selection below for new password");
+            //     }
             
-              }
-            }
+            //   }
+            // }
             
 function getRandomUpperCase(){
     return String.fromCharCode(Math.floor(Math.random()*26)+65);
@@ -67,14 +68,20 @@ const randomFunc = {
 };
 
 //generate event
-generateEl.addEventListener('click', () =>{
+generateEl.addEventListener('click', function() {
     const length = +lengthEl.value;
+    if (length < 8 || length > 128 && length !== null) {
+      console.log(length);
+      alert("Must enter valid length")
+      return;
+    } else {
     const hasUpper = upperEl.checked;
     const hasLower = lowerEl.checked;
     const hasNumber = numberEl.checked;
     const hasSymbol = symbolEl.checked;
 
 answerEl.innerText = generatePassword(hasUpper, hasLower, hasNumber, hasSymbol, length);
+    }
 });
 
 function generatePassword(upper, lower, number, symbol, length){
