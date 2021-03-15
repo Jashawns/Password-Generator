@@ -36,6 +36,7 @@ p {
   border: dashed;
   border-width: 1px;
   color: hsl(206, 17%, 28%);
+  word-wrap: break-word;
   font-size: 18px;
   margin: 0 auto;
   max-width: 800px;
