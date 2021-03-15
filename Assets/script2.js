@@ -33,7 +33,7 @@
             
             //   }
             // }
-            
+// unique code to asciitable (math.floor to round number down) (math.random decimal number between 65 to 26     //    
 function getRandomUpperCase(){
     return String.fromCharCode(Math.floor(Math.random()*26)+65);
    }
