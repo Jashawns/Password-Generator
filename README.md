@@ -1,34 +1,21 @@
 # Password-Generator
 
-## text
+## User Story
 
-- text 
-  - text
+AS A avid computer user you have grown tired of having to think of new passwords every 30 days for all of your accounts. All of your passwords have to be 8 - 128 characters long and you want to be able to just click a button every 30 days that will create a new password. You need a password that includes 4 different types of characters so that you no longer have to spend an extended amount of time coming up with new passwords. 
 
-### textt
-.card-footer does nothnig when you click 
-.card-body needs to produce password inside box 
-unlimited loop needs to be created 
-password length , character selection and validate
-written on page or aler
+## Description 
 
-User Story
-AS AN employee with access to sensitive data
-I WANT to randomly generate a password that meets certain criteria
-SO THAT I can create a strong password that provides greater security
-Acceptance Criteria
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+This is a password generator that will create unlimmted passwords that are 8 - 128 characters in length. The characters will include numbers, special characters, upper case letters, and lower case letters. When the button is clicked an alert will appear that directs the client to select their character limit. If the character limit is below or above the set parameters an "Invalid Response" alert will appear. The client must then click generate password again and after selecting the correct number of characters they will be asked to confirm the use of the 4 different character types. After confirmation the new password will display in a text box on the page. 
+
+## Conclusion 
+
+Passwords will continue to generate every time the button is clicked. Each time the button is clicked the client will have the choice of adjusting the character length and confirming all 4 character choices. 
+
+## Deployed Link 
+
+https://jashawns.github.io/Password-Generator/
+
+## GitHub Location 
+
+https://github.com/Jashawns/Password-Generator.git
