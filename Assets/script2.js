@@ -1,113 +1,191 @@
+// // Assignment Code
+// // var generateBtn = document.querySelector("#generate");
+
+// // Write password to the #password input
 // function writePassword() {
-//     // var password = generatePassword();
-//     // var passwordText = document.querySelector("#password");
-  
-//     // passwordText.value = password;
-// //    var getLength = true;
-// //     while (getLength) {
-// //       var characterTy = prompt("Please enter your password length");
-// //       if (characterTy >= 8 && characterTy <= 128) {
-// //        console.log ("Accepted") 
-// //         getLength = false;
-// //       }
-// var getLength = true;
-//             while (getLength) {
-//               var characterTy = prompt("Please enter a password length 8 - 128 characters");
-//               if (characterTy < 8 || characterTy > 128 && characterTy !== null) {
-//                console.log (characterTy) 
-//                alert("Must enter valid length");
-//                 getLength = false;
-//               }
-//             }
-//             newFunction();
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-            // function newFunction() {
-            //   var getCharacters = true;
-            //   while (getCharacters) {
-            //     var characters = prompt("Please type accept if you agree to use previously selected character length and will select character type lowercase, uppercase, numeric, and/or special characters to create your password");
-            //     if (characters === "accept") {
-            //       console.log("Password Created");
-            //       getCharacters = false;
-            //       alert("Please enter selection below for new password");
-            //     }
-            
-            //   }
-            // }
-// unique code to asciitable (math.floor to round number down) (math.random decimal number between 65 to 26     //    
-function getRandomUpperCase(){
-    return String.fromCharCode(Math.floor(Math.random()*26)+65);
-   }
+//   passwordText.value = password;
 
-   function getRandomLowerCase(){
-    return String.fromCharCode(Math.floor(Math.random()*26)+97);
- } 
+// }
 
- function getRandomNumber(){
-    return String.fromCharCode(Math.floor(Math.random()*10)+48);
- }
+// // Add event listener to generate button
+// // generateBtn.addEventListener("click", writePassword);
 
- function getRandomSymbol(){
-    var symbol = "!@#$%^&*(){}[]=<>/,.|~?";
-    return symbol[Math.floor(Math.random()*symbol.length)];
+
+var passwordText = "";
+
+var numbersChar = ["0", "1", "2","3", "4", "5", "6", "7", "8", "9"];
+
+var specialChar = 
+    ['@',
+    '%',
+    '+',
+    '\\',
+    '/',
+    "'",
+    '!',
+    '#',
+    '$',
+    '^',
+    '?',
+    ':',
+    ',',
+    ')',
+    '(',
+    '}',
+    '{',
+    ']',
+    '[',
+    '~',
+    '-',
+    '_',
+    '.'
+];
+
+var lowerChar = ['a',
+    'b',
+    'c',
+    'd',
+    'e',
+    'f',
+    'g',
+    'h',
+    'i',
+    'j',
+    'k',
+    'l',
+    'm',
+    'n',
+    'o',
+    'p',
+    'q',
+    'r',
+    's',
+    't',
+    'u',
+    'v',
+    'w',
+    'x',
+    'y',
+    'z'
+];
+
+var upperChar = ['A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+];
+
+var picknumbersChar = false;
+var pickspecialChar = false;
+var picklowerChar = false;
+var pickupperChar = false;
+
+
+function writePassword() {
+    var password = prompt("Select and type a password length of 8 - 128 characters?")
+    if(password < 8) { 
+        
+        alert("Invalid Response");
+        return;
+    }
+    
+    if(password > 128) { 
+        
+        alert("Invalid Response");
+        return;
+    }
+
+    if(password === null) { 
+        
+        alert("Invalid Response");
+        return;
+    }
+    
+    if (password) {
+        
+        if (confirm("Click ok to add numbers to password")) {
+            picknumbersChar = true
+        } 
+
+        if (confirm("Click ok to add special characters to password")) {
+            pickspecialChar = true
+        } 
+
+
+        if (confirm("Click ok to add lower case letters to password")) {
+            pickupperChar = true
+        } 
+
+        if (confirm("Click ok to add upper case letters to password")) {
+            picklowerChar = true
+        } 
+
+        if (
+            picknumbersChar === false && 
+            pickspecialChar === false && 
+            picklowerChar === false && 
+            pickupperChar === false 
+            ) 
+            { return;
+        }
+}
+    var generateBtn = document.querySelector("#generate");
+    generateBtn += (picknumbersChar ? 
+        numbersChar 
+        // else
+        : 
+        '');
+    generateBtn += (pickspecialChar ? 
+        specialChar 
+        : 
+        '');
+    generateBtn += (picklowerChar ? 
+        lowerChar 
+        : 
+        '');
+    generateBtn += (pickupperChar ? 
+        upperChar 
+        : 
+        '');
+
+    passwordText = generatePassword(password, generateBtn);
+
+    document.querySelector("#password").innerHTML = passwordText;
+    passwordText.value = password;
+}
+function generatePassword(length, generateBtn) {
+    var passwordText = '';
+    for (var i = 0; i < length; ++i) {
+        passwordText += generateBtn.charAt(Math.floor(Math.random() * generateBtn.length));
+    }
+    return passwordText;
+    console.log(passwordText)
+
 }
 
-var answerEl = document.getElementById("answer");
-var lengthEl = document.getElementById("length");
-var numberEl = document.getElementById("number");
-var lowerEl = document.getElementById("lower");
-var upperEl = document.getElementById("upper");
-var symbolEl = document.getElementById("symbol");
-var copyEl = document.getElementById("copy");
-var generateEl = document.getElementById("generate");
-
-const randomFunc = {
-    upper : getRandomUpperCase,
-    lower : getRandomLowerCase,
-    number : getRandomNumber,
-    symbol : getRandomSymbol
-};
-
-//generate event
-generateEl.addEventListener('click', function() {
-    const length = +lengthEl.value;
-    if (length < 8 || length > 128 && length !== null) {
-      console.log(length);
-      alert("Must enter valid length")
-      return;
-    } else {
-    const hasUpper = upperEl.checked;
-    const hasLower = lowerEl.checked;
-    const hasNumber = numberEl.checked;
-    const hasSymbol = symbolEl.checked;
-
-answerEl.innerText = generatePassword(hasUpper, hasLower, hasNumber, hasSymbol, length);
-    }
-});
-
-function generatePassword(upper, lower, number, symbol, length){
-    let generatedPassword = "";
-
-    const typesCount = upper + lower + number + symbol;
-
-    //console.log(typesCount);
-
-    const typesArr = [{upper}, {lower}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-
-    if(typesCount === 0) {
-        return '';
-    }
-
-    for(let i=0; i<length; i+=typesCount) {
-        typesArr.forEach(type => {
-            const funcName = Object.keys(type)[0];
-            generatedPassword += randomFunc[funcName]();
-        });
-
-
-    }
-
-    const finalPassword = generatedPassword.slice(0, length);
-
-
-    return finalPassword;
-}
+generateBtn.addEventListener("click", generateBtn);
