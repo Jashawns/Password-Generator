@@ -19,3 +19,7 @@ https://jashawns.github.io/Password-Generator/
 ## GitHub Location 
 
 https://github.com/Jashawns/Password-Generator.git
+
+## Visuals 
+
+![demo](./Assets/passwordgen.png) 
